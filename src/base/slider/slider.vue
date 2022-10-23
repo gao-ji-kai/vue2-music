@@ -84,7 +84,6 @@ export default {
         snapLoop: this.loop,
         snapThreshold: 0.3,
         snapSpeed: 400,
-        click: true
       });
       this.slider.on('scrollEnd', () => {
         let pageIndex = this.slider.getCurrentPage().pageX
@@ -108,6 +107,10 @@ export default {
         this.slider.goToPage(pageIndex,0,400)
       },this.interval)
     }
+  },
+  //有利于内存释放
+  destroyed() {
+    clearTimeout(this.timer)
   }
 };
 </script>
